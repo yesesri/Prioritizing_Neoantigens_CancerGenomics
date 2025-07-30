@@ -19,7 +19,9 @@ Extracts mutation and fusion information for each patient from MAF and Final_Fus
 `Usage: python pre_processing.py -m maf_file_with_path -b output_folder_path –f Final_Fusion_call_set.txt -c “BRCA” #cancer type` 
 
 Output: 
+
 $out_folder/*.vcf   ; #out_folder/*.fusion.txt
+
 
 ###### Generation of Mutated Peptides: 
 
@@ -27,30 +29,31 @@ Impute’s  each SNP and INDEL (from VCF files generated in previous step ) on a
 
 	Usage: python Genome_Mutations_ProteinChange.per_mut.py   $basepath   $options	
 
-basepath: location of folder where all the required Input files are located i.e. vcf files, reference genome and gtf file.
-Options: 
-Python Genome_Mutations_ProteinChange.per_mut.py -h  
+`basepath: location of folder where all the required Input files are located i.e. vcf files, reference genome and gtf file.`
+`Options: Python Genome_Mutations_ProteinChange.per_mut.py -h `
 
-Output files 
-*. peptide.seq.fa              : mutated peptides in fasta format 
+Output :
 
-*. mutationTable.dat.gz   : 
+	*. peptide.seq.fa              : mutated peptides in fasta format 
 
-Table: 
-Chromosome
-Gene ID 
-Transcript ID 
-Number of exons
-CDS start : CDS end
-Mutation position on genome
-Reference base 
-Alternative base 
-Strand  
+	*. mutationTable.dat.gz   : 
 
-Mutation position scaled to CDS region start 
+		Table: 
+		Chromosome
+		Gene ID 
+		Transcript ID 
+		Number of exons
+		CDS start : CDS end
+		Mutation position on genome
+		Reference base 
+		Alternative base 
+		Strand  
+
+	Mutation position scaled to CDS region start 
 	
-      * .mapping.dat.gz :  gene > transcript  > CDS region mapping 
-      *.main_seq.fa.gz  :  include CDS sequence before and after insertion of mutations.
+	* .mapping.dat.gz :  gene > transcript  > CDS region mapping 
+
+	*.main_seq.fa.gz  :  include CDS sequence before and after insertion of mutations.
 
 
 Generates fusion sequence for each fusion event (in the fusion.txt files generated in previous step). 
@@ -80,18 +83,19 @@ The follow script reformats the mutated peptide sequence files for netmhc
 
 Output: 
 
-Type = mut 
+	Type = mut 
 
-*.IDmap.dat: sequence ID mapped to number ; *.pep.fa         : mutated pep fasta file [input to netMHC] 
+	*.IDmap.dat: sequence ID mapped to number ; *.pep.fa         : mutated pep fasta file [input to netMHC] 
 
-Type = fusion 
+	Type = fusion 
 
-*.fusion.pep.fa ; *.fusion.IDmap.dat
+	*.fusion.pep.fa ; *.fusion.IDmap.dat
 
 
 Use the above output files, and run the netmhc to predict binding affinity.
 
-	`python  Job_submit.netMHC.py  
+	`python  Job_submit.netMHC.py`
+ 
 	-I Input to mutated peptide files generated in above step 
 	-o output folder  
 	-a file that include list of alleles geneotyped for the current patient 
@@ -99,7 +103,7 @@ Use the above output files, and run the netmhc to predict binding affinity.
 	-c  classI or classII 
 	-i patient ID
 	-t type 
-	-N NCSA_file options`
+	-N NCSA_file options
 
 
 ###### Summarizing netMHC out files : 
