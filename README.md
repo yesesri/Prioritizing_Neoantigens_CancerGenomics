@@ -4,9 +4,6 @@ Publication : https://doi.org/10.1080/2162402X.2020.1744947
 
 ######  Required Input Files
 
-*If you are using hg38 version BAM files; hg38 has GRCh38.88 and GRCh38.94 make sure of the version.
-*For BRCA project: GRCh38.88 version was used 
-
 gtf File           
 
 Reference File            
